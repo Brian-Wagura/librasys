@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+<body>
+    <div class="container">
+        <h1 class="mt-2">All Members</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Member name</th>
+                    <th scope="col">Member email</th>
+                    <th scope="col">Outstanding debt</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            {% for member in members %}
+            <tbody>
+                <tr>
+            <th scope="row">{{ member.member_id }}</th>
+            <td>{{ member.member_name }}</a></td>
+            <td>{{ member.member_email }}</td>
+            <td> KES {{ member.outstanding_debt }}</td>
+            <td>
+                <a href="{% url 'update_member' member.pk %}"><button type="button" class="btn btn-primary">Edit</button></a>
+                <a href="{% url 'delete_member' member.pk %}"><button type="button" class="btn btn-danger">Delete</button></a>
+            </td>
+            </tr>
+        </tbody>
+        {% endfor %}
+        </table>
+        <a href="{% url 'create_member' %}"><button type="button" class="btn btn-primary">Create Member</button></a>
+    </div>
+</body>
+{% endblock %}

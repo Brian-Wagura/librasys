@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="mt-2">Update Member</h1>
+    <form class="mt-4" method="post" action="{% url 'update_member' pk=pk %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+{% endblock %}

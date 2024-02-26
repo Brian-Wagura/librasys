@@ -1,0 +1,60 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+{% if error_message %}
+
+<div class="container">
+    <div class="alert alert-danger" role="alert">
+      <p>{{ error_message }}</p>
+    </div>
+  </div>
+  
+{% else %}
+<div class="container">
+    <h1>Issue Book to Member at KES 50 per day</h1>
+    <form method="post" action="{% url 'issue_book_to_member' %}">
+        {% csrf_token %}
+        <label for="book">Select a Book:</label>
+        <select name="book_id" id="book" class="form-select">
+            {% for book in books %}
+                <option value="{{ book.pk }}">{{ book.title }}</option>
+            {% endfor %}
+        </select><br><br>
+        <label for="member">Select a Member:</label>
+        <select name="member_id" id="member" class="form-select">
+            {% for member in members %}
+                <option value="{{ member.pk }}">{{ member.member_name }}</option>
+            {% endfor %}
+        </select><br><br>
+        <button type="submit" class="btn btn-primary">Issue Book</button>
+    </form>
+</div>
+
+<script>
+    // Function to update action URL based on selected values
+    function updateActionUrl() {
+        // Get the selected book ID and member ID
+        var selectedBookId = document.getElementById("book").value;
+        var selectedMemberId = document.getElementById("member").value;
+
+        // Construct the new action URL with selected IDs
+        var actionUrl = "{% url 'issue_book_to_member' %}" + "?book_id=" + selectedBookId + "&member_id=" + selectedMemberId;
+
+        // Update the form's action attribute with the new URL
+        document.getElementById("issue_book_form").action = actionUrl;
+    }
+
+    // Add event listeners to the dropdown menus to trigger action URL update
+    document.getElementById("book").addEventListener("change", updateActionUrl);
+    document.getElementById("member").addEventListener("change", updateActionUrl);
+
+    // Call the updateActionUrl function initially to set the initial action URL
+    updateActionUrl();
+</script>
+{% endif %}
+
+
+{% endblock %}
+
+

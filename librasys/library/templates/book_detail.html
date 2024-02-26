@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container" style="padding-top: 25px;">
+    <figure class="text-start">
+        <blockquote class="blockquote">
+          <h1 class="display-5">{{ book.title }}</h1>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+            Author: {{ book.author }}
+        </figcaption>
+        <p>Quantity: {{ book.quantity }}</p>
+      </figure>
+</div>
+
+{% endblock %}
+

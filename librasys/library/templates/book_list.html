@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+<body>
+        <div class="container">
+            <h1 class="mt-2">All Books</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                {% for book in books %}
+                <tbody>
+                    <tr>
+                        <th scope="row">{{ book.book_id }}</th>
+                        <td><a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a></td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.quantity }}</td>
+                <td>
+                    <a href="{% url 'edit_book' book.pk %}"><button type="button" class="btn btn-primary">Edit</button></a>
+                    <a href="{% url 'delete_book' book.pk %}"><button type="button" class="btn btn-danger">Delete</button></a>
+                </td>
+                </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+    <a href="{% url 'add_book' %}"><button type="button" class="btn btn-primary">Add Book</button></a>
+    </div>
+</body>
+{% endblock %}
