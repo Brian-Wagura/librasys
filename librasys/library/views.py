@@ -139,7 +139,7 @@ def return_book(request, issuance_id):
             issuance.member.save()
 
             issuance.delete()
-            return redirect('issued_books')
+            return redirect('member_list')
         else: 
             error_message = f"{issuance.member.member_name} outstanding debt is  {issuance.member.outstanding_debt} which exceeds KES.500.\
                   Cannot return the book - {issuance.book.title} by {issuance.book.author}."
