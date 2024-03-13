@@ -13,12 +13,26 @@ operations within the library.
 
 ## Technologies Used
 ### Frontend
-HTML
-CSS
-Bootstrap
-JavaScript
+- HTML
+- CSS
+- Bootstrap
+- JavaScript
 
 ### Backend
-Python - Django Web Framework
-PostgreSQL Database
+- Python - Django Web Framework
+- PostgreSQL Database
+
+## Screenshots
+![CRUD Books](screenshots/CRUD-Books.png) Create, Read, Update and Delete books.
+
+![CRUD Members](screenshots/CRUDMembers.png) Create, Read, Update and Delete members.
+
+![Issue Book](screenshots/IssueBook.png) Issue Books to members.
+
+![Issued Books](screenshots/IssuedBooks.png) Issued Books to Members.
+
+![Exceed500](screenshots/Exceed500.png) Debt exceeds 500, Cannot borrow book.
+
+![CannotReturn](screenshots/CannotReturn.png) Debt exceeds 500, Cannot return book.
+
 
